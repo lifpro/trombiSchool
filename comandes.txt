@@ -1,0 +1,9 @@
+#Lancer l'app dans le navigateur
+$ionic serve
+
+#Lancer l'app en mode lab
+$ionic lab
+
+#Lancer l'app dans l'emulateur
+$ionic cordova platform add android
+$ionic cordova run android

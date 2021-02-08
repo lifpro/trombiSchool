@@ -1,5 +1,7 @@
 {
   "name": "trombiSchool",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
