@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="etudiants"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Etudiant N°{{etudiant.id}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p>Nom: <strong>{{etudiant.nom}}</strong></p>
+  <p>Prénom: <strong>{{etudiant.prenom}}</strong></p>
+  <p>Téléphone: <strong>{{etudiant.telephone}}</strong></p>
+  <p>Email: <strong>{{etudiant.email}}</strong></p>
+  <p>Formation:<strong> {{etudiant.formation}}</strong></p>
+</ion-content>

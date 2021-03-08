@@ -1,11 +1,44 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Professeurs
+      Rechercher un professeur
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-label class="ion-text-center" color="mywarning">Rechercher un professeur</ion-label>
+  <div class="icon">
+    <ion-icon name="people" color="primary"></ion-icon>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Cycle</ion-label>
+      <ion-select value="D" interface="action-sheet">
+        <ion-select-option value="D">DUT</ion-select-option>
+        <ion-select-option value="L">Licence</ion-select-option>
+        <ion-select-option value="M">Master</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Formation</ion-label>
+      <ion-select value="GL" interface="action-sheet">
+        <ion-select-option value="GL">Génie Logiciel</ion-select-option>
+        <ion-select-option value="L">Licence</ion-select-option>
+        <ion-select-option value="M">Master</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Nom ou prénom</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+  </ion-list>
+
 </ion-content>
+<ion-footer>
+  <ion-button expand="full" fill="solid" routerLink="/professeurs">
+    Rechercher
+  </ion-button>
+</ion-footer>

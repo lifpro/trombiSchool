@@ -1,9 +1,24 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>etudiants</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Liste des étudiants</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card *ngFor="let e of etudiants" [routerLink]="['/etudiants/'+e.id]" routerDirection="forward">
+    <ion-card-header>
+      <ion-card-subtitle>Matricule : {{e.id}}</ion-card-subtitle>
+      <ion-card-title>{{e.prenom}} {{e.nom}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Téléphone :<strong>{{e.telephone}}</strong></p>
+      <p>Email :<strong>{{e.email}}</strong></p>
+      <p>Formation :<strong>{{e.formation}}</strong></p>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

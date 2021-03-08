@@ -1,16 +1,62 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Etudiants
+      Rechercher un étudiant
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h2 class="ion-text-center" style="color:#FF0000">Rechercher un étudiant</h2>
+  <div class="icon">
+    <ion-icon name="school" color="primary"></ion-icon>
+  </div>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Cycle</ion-label>
+      <ion-select value="D" interface="action-sheet">
+        <ion-select-option value="D">DUT</ion-select-option>
+        <ion-select-option value="L">Licence</ion-select-option>
+        <ion-select-option value="M">Master</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Formation</ion-label>
+      <ion-select value="GL" interface="action-sheet">
+        <ion-select-option value="GL">Génie Logiciel</ion-select-option>
+        <ion-select-option value="L">Licence</ion-select-option>
+        <ion-select-option value="M">Master</ion-select-option>
+      </ion-select>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="floating">Ville</ion-label>
+      <ion-select value="Bamako" interface="action-sheet">
+        <ion-select-option value="Bamako">Bamako</ion-select-option>
+        <ion-select-option value="Segou">Segou</ion-select-option>
+        <ion-select-option value="Sikasso">Sikasso</ion-select-option>
+        <ion-select-option value="Mopti">Mopti/Sevaré</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Centre</ion-label>
+      <ion-select value="Direction" interface="action-sheet">
+        <ion-select-option value="Direction">Direction</ion-select-option>
+        <ion-select-option value="Sabaliboygou">Sabaliboygou</ion-select-option>
+        <ion-select-option value="Kalabancoro-Adeken">Kalabancoro-Adeken</ion-select-option>
+        <ion-select-option value="Missabougou">Missabougou</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nom ou prénom</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+  </ion-list>
 
 </ion-content>
 <ion-footer>
-  <ion-button expand="block">Rechercher</ion-button>
+  <ion-button expand="full" fill="solid" routerLink="/etudiants">
+    Rechercher
+  </ion-button>
 </ion-footer>
