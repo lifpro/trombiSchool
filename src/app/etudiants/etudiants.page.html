@@ -8,17 +8,27 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let e of etudiants" [routerLink]="['/etudiants/'+e.id]" routerDirection="forward">
+  <ion-card *ngFor="let e of etudiants2">
     <ion-card-header>
       <ion-card-subtitle>Matricule : {{e.id}}</ion-card-subtitle>
-      <ion-card-title>{{e.prenom}} {{e.nom}}</ion-card-title>
+      <ion-card-title [style.text-decoration]="linkStyle">{{e.prenom | titlecase}} {{e.nom | uppercase}}
+      </ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
+      <ion-button expand="full" fill="solid" [routerLink]="['/etudiants/'+e.id]" routerDirection="forward">
+        Afficher
+      </ion-button>
+      <ion-icon name="trash-outline" (click)="delete(e.id)"></ion-icon>
+
+    </ion-card-content>
+
+    <!-- <ion-card-content>
       <p>Téléphone :<strong>{{e.telephone}}</strong></p>
       <p>Email :<strong>{{e.email}}</strong></p>
       <p>Formation :<strong>{{e.formation}}</strong></p>
-    </ion-card-content>
+      <p *ngIf="e.cours===1">Cour :<strong>Jour</strong></p>
+      <p *ngIf="e.cours!==1">Cour :<strong>Soir</strong></p>
+    </ion-card-content> -->
   </ion-card>
 
 </ion-content>

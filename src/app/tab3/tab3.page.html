@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar  color="primary">
+  <ion-toolbar color="primary">
     <ion-title>
       Mon profil
     </ion-title>
@@ -7,18 +7,18 @@
 </ion-header>
 
 <ion-content>
-  
+
   <ion-grid>
     <ion-row>
       <ion-col col-lg-1>
         <img src="assets/img/moussa.png" />
       </ion-col>
-     
+
       <ion-col>
         Prénom :<strong>Moussa</strong><br>
         Nom :<strong>SISSOKO</strong><br>
         Sexe :<strong>Masculin</strong><br>
-        Né(e) le  :<strong>27/02/1969</strong><br>
+        Né(e) le :<strong>27/02/1969</strong><br>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -27,8 +27,13 @@
           4ième année genie logiciel technolab ISTA
         </div>
       </ion-col>
-  
-  
+
+
     </ion-row>
   </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-button expand="full" fill="solid" (click)="save()">
+    Enregistrer
+  </ion-button>
+</ion-footer>

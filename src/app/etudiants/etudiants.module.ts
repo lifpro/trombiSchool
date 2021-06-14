@@ -15,6 +15,7 @@ import { EtudiantsPage } from './etudiants.page';
     IonicModule,
     EtudiantsPageRoutingModule
   ],
+  exports: [],
   declarations: [EtudiantsPage]
 })
-export class EtudiantsPageModule {}
+export class EtudiantsPageModule { }

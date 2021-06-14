@@ -4,6 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    // redirectTo: 'etudiants',
+    // pathMatch: 'full'
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {

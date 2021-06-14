@@ -12,8 +12,8 @@
   </div>
   <ion-list>
     <ion-item>
-      <ion-label position="floating">Cycle</ion-label>
-      <ion-select value="D" interface="action-sheet">
+      <ion-label appRequiredLabel position="floating" color="primary">Cycle</ion-label>
+      <ion-select [(ngModel)]="cycle" interface="action-sheet">
         <ion-select-option value="D">DUT</ion-select-option>
         <ion-select-option value="L">Licence</ion-select-option>
         <ion-select-option value="M">Master</ion-select-option>
@@ -28,7 +28,7 @@
       </ion-select>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="cycle!=='M'">
       <ion-label position="floating">Ville</ion-label>
       <ion-select value="Bamako" interface="action-sheet">
         <ion-select-option value="Bamako">Bamako</ion-select-option>
@@ -50,6 +50,9 @@
     <ion-item>
       <ion-label position="floating">Nom ou prénom</ion-label>
       <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <div [class.red]="myclass"></div>
     </ion-item>
 
   </ion-list>
