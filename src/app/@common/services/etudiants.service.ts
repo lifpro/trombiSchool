@@ -7,7 +7,7 @@ import { Etudiant } from '../model/etudiant';
   providedIn: 'root'
 })
 export class EtudiantsService {
-  apiUrl: string = "http://192.168.12.112:8080/api-sc/"
+  apiUrl: string = "http://192.168.12.114:8080/api-sc/"
   constructor(protected http: HttpClient) { }
 
   protected baseOption() {
