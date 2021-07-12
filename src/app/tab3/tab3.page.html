@@ -5,35 +5,153 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content *ngIf="statut===0">
+  <form [formGroup]="inscform">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Prénom</ion-label>
+        <ion-input formControlName="prenom"></ion-input>
+        <small class="text-danger" *ngIf="inscform.controls.prenom.touched">
+          <ion-text *ngIf="inscform.controls.prenom.errors?.required" color="danger">
+            Le prénom est <strong>Obligatoire</strong>
+          </ion-text>
+        </small>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input formControlName="nom"></ion-input>
+        <small class="text-danger" *ngIf="inscform.controls.nom.touched">
+          <ion-text *ngIf="inscform.controls.nom.errors?.required" color="danger">
+            Le nom est <strong>Obligatoire</strong>
+          </ion-text>
+        </small>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" color="primary">Cycle</ion-label>
+        <ion-select formControlName="cycle" interface="action-sheet">
+          <ion-select-option value="D">DUT</ion-select-option>
+          <ion-select-option value="L">Licence</ion-select-option>
+          <ion-select-option value="M">Master</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Formation</ion-label>
+        <ion-select formControlName="formation" interface="action-sheet">
+          <ion-select-option value="GL">Génie Logiciel</ion-select-option>
+          <ion-select-option value="L">Licence</ion-select-option>
+          <ion-select-option value="M">Master</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-<ion-content>
+      <ion-item *ngIf="cycle!=='M'">
+        <ion-label position="floating">Ville</ion-label>
+        <ion-select formControlName="ville" interface="action-sheet">
+          <ion-select-option value="Bamako">Bamako</ion-select-option>
+          <ion-select-option value="Segou">Segou</ion-select-option>
+          <ion-select-option value="Sikasso">Sikasso</ion-select-option>
+          <ion-select-option value="Mopti">Mopti/Sevaré</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-lg-1>
-        <img src="assets/img/moussa.png" />
-      </ion-col>
+      <ion-item>
+        <ion-label position="floating">Centre</ion-label>
+        <ion-select formControlName="centre" interface="action-sheet">
+          <ion-select-option value="Direction">Direction</ion-select-option>
+          <ion-select-option value="Sabaliboygou">Sabaliboygou</ion-select-option>
+          <ion-select-option value="Kalabancoro-Adeken">Kalabancoro-Adeken</ion-select-option>
+          <ion-select-option value="Missabougou">Missabougou</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
 
-      <ion-col>
-        Prénom :<strong>Moussa</strong><br>
-        Nom :<strong>SISSOKO</strong><br>
-        Sexe :<strong>Masculin</strong><br>
-        Né(e) le :<strong>27/02/1969</strong><br>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div>
-          4ième année genie logiciel technolab ISTA
-        </div>
-      </ion-col>
+</ion-content>
+<ion-content *ngIf="statut===1">
+  <form [formGroup]="loginform">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+
+</ion-content>
+
+<ion-content *ngIf="statut===2">
+  <form [formGroup]="inscform">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Prénom</ion-label>
+        <ion-input formControlName="prenom"></ion-input>
+        <small class="text-danger" *ngIf="inscform.controls.prenom.touched">
+          <ion-text *ngIf="inscform.controls.prenom.errors?.required" color="danger">
+            Le prénom est <strong>Obligatoire</strong>
+          </ion-text>
+        </small>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input formControlName="nom"></ion-input>
+        <small class="text-danger" *ngIf="inscform.controls.nom.touched">
+          <ion-text *ngIf="inscform.controls.nom.errors?.required" color="danger">
+            Le nom est <strong>Obligatoire</strong>
+          </ion-text>
+        </small>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" color="primary">Cycle</ion-label>
+        <ion-select formControlName="cycle" interface="action-sheet">
+          <ion-select-option value="D">DUT</ion-select-option>
+          <ion-select-option value="L">Licence</ion-select-option>
+          <ion-select-option value="M">Master</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Formation</ion-label>
+        <ion-select formControlName="formation" interface="action-sheet">
+          <ion-select-option value="GL">Génie Logiciel</ion-select-option>
+          <ion-select-option value="L">Licence</ion-select-option>
+          <ion-select-option value="M">Master</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item *ngIf="cycle!=='M'">
+        <ion-label position="floating">Ville</ion-label>
+        <ion-select formControlName="ville" interface="action-sheet">
+          <ion-select-option value="Bamako">Bamako</ion-select-option>
+          <ion-select-option value="Segou">Segou</ion-select-option>
+          <ion-select-option value="Sikasso">Sikasso</ion-select-option>
+          <ion-select-option value="Mopti">Mopti/Sevaré</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Centre</ion-label>
+        <ion-select formControlName="centre" interface="action-sheet">
+          <ion-select-option value="Direction">Direction</ion-select-option>
+          <ion-select-option value="Sabaliboygou">Sabaliboygou</ion-select-option>
+          <ion-select-option value="Kalabancoro-Adeken">Kalabancoro-Adeken</ion-select-option>
+          <ion-select-option value="Missabougou">Missabougou</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
 
 
-    </ion-row>
-  </ion-grid>
 </ion-content>
 <ion-footer>
-  <ion-button expand="full" fill="solid" (click)="save()">
-    Enregistrer
+  <ion-button *ngIf="statut===0" [disabled]="!inscform.valid" expand="full" fill="solid" (click)="saveToFB()">
+    S'inscrire
+  </ion-button>
+  <ion-button *ngIf="statut===1" [disabled]="!loginform.valid" expand="full" fill="solid" (click)="connecter()">
+    Se connecter
+  </ion-button>
+  <ion-button *ngIf="statut===2" expand="full" fill="solid" (click)="updateToFB()">
+    Modifier mon profil
   </ion-button>
 </ion-footer>

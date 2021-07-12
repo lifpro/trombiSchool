@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-item>
+      {{mform.cycle}}
+    </ion-item>
+  </ion-list>
   <ion-card *ngFor="let e of etudiants2">
     <ion-card-header>
       <ion-card-subtitle>Matricule : {{e.id}}</ion-card-subtitle>

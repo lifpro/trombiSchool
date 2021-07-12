@@ -7,3 +7,20 @@ $ionic lab
 #Lancer l'app dans l'emulateur
 $ionic cordova platform add android
 $ionic cordova run android
+
+#Installer le plugin angulaireFire
+npm install firebase @angular/fire
+
+#camera
+ionic cordova plugin add cordova-plugin-camera
+npm install @ionic-native/camera
+
+#media
+ionic cordova plugin add cordova-plugin-media
+npm install @ionic-native/media
+ionic cordova plugin add cordova-plugin-media-capture
+npm install @ionic-native/media-capture
+
+#Base64
+ionic cordova plugin add com-badrit-base64
+npm install @ionic-native/base64

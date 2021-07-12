@@ -10,4 +10,6 @@ export class Etudiant {
     formation: string;
     cours: boolean;// O: cours du soir, 1: cours du jours
     photo: string;
+    ville: string;
+    centre: string;
 }
