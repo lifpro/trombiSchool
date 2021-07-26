@@ -9,6 +9,7 @@ import { Toast } from '@ionic-native/toast/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController, ToastController } from '@ionic/angular';
+import { AngularFireStorage } from '@angular/fire/storage';
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -24,6 +25,7 @@ export class Tab3Page {
   password: string;
   imagePath: string;
   image = '../assets/img/user.png';
+  task: any;
   constructor(
     protected service: EtudiantsService,
     protected serviceFb: EtudiantFireBasesService,
@@ -33,6 +35,7 @@ export class Tab3Page {
     protected fb: FormBuilder,
     public afAuth: AngularFireAuth,
     public afFS: AngularFirestore,
+    public afSG: AngularFireStorage,
     public toastController: ToastController,
     // private toast: Toast
   ) {
@@ -121,12 +124,15 @@ export class Tab3Page {
 
   }
   saveEtudiantInfoToFB() {
-    this.serviceFb.saveDocument(this.item)
-      .then(async resp => {
-        this.successInscription();
-      }).catch(error => {
-        console.log(error);
-      })
+    this.task = this.afSG.ref(this.imagePath).putString(this.image, 'data_url');
+    this.task.then(res => {
+      this.serviceFb.saveDocument(this.item)
+        .then(async resp => {
+          this.successInscription();
+        }).catch(error => {
+          console.log(error);
+        })
+    });
   }
   connecter() {
 
