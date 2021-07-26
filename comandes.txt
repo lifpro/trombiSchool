@@ -24,3 +24,7 @@ npm install @ionic-native/media-capture
 #Base64
 ionic cordova plugin add com-badrit-base64
 npm install @ionic-native/base64
+
+#Internet
+ionic cordova plugin add cordova-plugin-network-information
+npm install --save @ionic-native/network

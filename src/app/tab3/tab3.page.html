@@ -1,13 +1,31 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Mon profil
+      <ion-label *ngIf="statut===0">Créér mon compte</ion-label>
+      <ion-label *ngIf="statut===1">Se connecter</ion-label>
+      <ion-label *ngIf="statut===2"> Mon profil</ion-label>
+
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content *ngIf="statut===0">
+  <div class="header">
+    <div class="photo-box" (click)="addPhoto()">
+      <div class="img-box">
+        <img [src]="image">
+      </div>
+      <div class="buttons_box">
+        <div class="icon_box">
+          <ion-icon name="camera"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
   <form [formGroup]="inscform">
     <ion-list>
+      <ion-item lines="none">
+        <ion-label class="fieldset" color="primary">Votre profil</ion-label>
+      </ion-item>
       <ion-item>
         <ion-label position="floating">Prénom</ion-label>
         <ion-input formControlName="prenom"></ion-input>
@@ -27,7 +45,31 @@
         </small>
       </ion-item>
       <ion-item>
-        <ion-label position="floating" color="primary">Cycle</ion-label>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+        <small class="text-danger" *ngIf="inscform.controls.email.touched">
+          <ion-text *ngIf="inscform.controls.email.errors?.required" color="danger">
+            L'email est <strong>Obligatoire</strong>
+          </ion-text>
+          <ion-text *ngIf="inscform.controls.email.errors?.invalidEmail" color="danger">
+            L'email est <strong>Incorrect</strong>
+          </ion-text>
+        </small>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+        <small class="text-danger" *ngIf="inscform.controls.password.touched">
+          <ion-text *ngIf="inscform.controls.password.errors?.required" color="danger">
+            Le mot de passe est <strong>Obligatoire</strong>
+          </ion-text>
+        </small>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="fieldset" color="primary">Votre formation</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Cycle</ion-label>
         <ion-select formControlName="cycle" interface="action-sheet">
           <ion-select-option value="D">DUT</ion-select-option>
           <ion-select-option value="L">Licence</ion-select-option>
@@ -62,6 +104,8 @@
           <ion-select-option value="Missabougou">Missabougou</ion-select-option>
         </ion-select>
       </ion-item>
+
+
     </ion-list>
   </form>
 
