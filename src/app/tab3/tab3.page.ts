@@ -109,17 +109,23 @@ export class Tab3Page {
   //   console.log('Entre dans ma methode save')
   // }
   saveToFB() {
-    this.afAuth.createUserWithEmailAndPassword(this.item.email,
-      this.password)
-      .then(auth => {
-        console.log('ID de l utilisateur: ' + auth.user.uid);
-        this.item.id = auth.user.uid;
-        this.saveEtudiantInfoToFB();
-      })
-      .catch(err => {
-        console.log('Erreur: ' + err);
-        this.errorInscription();
-      });
+    if (this.network.type === 'none') {
+      this.errorConnexion();
+    } else {
+      this.afAuth.createUserWithEmailAndPassword(this.item.email,
+        this.password)
+        .then(auth => {
+          //console.log(auth)
+          //console.log('ID de l utilisateur: ' + auth.user.uid);
+          this.item.id = auth.user.uid;
+          this.saveEtudiantInfoToFB();
+        })
+        .catch(err => {
+          console.log('Erreur: ' + err);
+          this.errorInscription(err);
+        });
+
+    }
 
   }
   saveEtudiantInfoToFB() {
@@ -136,7 +142,7 @@ export class Tab3Page {
             })
           this.successInscription();
         }).catch(error => {
-          this.errorInscription();
+          this.errorInscription(error);
         })
     });
   }
@@ -160,27 +166,17 @@ export class Tab3Page {
   async addPhoto() {
     const actionSheet = await this.asc.create({
       header: 'Choisir une photo de profil',
-      cssClass: 'my-custom-class',
       buttons: [{
         text: 'Caméra',
         icon: 'camera',
         handler: () => {
-          if (this.network.type === 'none') {
-            this.errorConnexion();
-          } else {
-            this.addPhotoFromCamera();
-          }
+          this.addPhotoFromCamera();
         }
       }, {
         text: 'Galerie',
         icon: 'images',
         handler: () => {
-
-          if (this.network.type === 'none') {
-            this.errorConnexion();
-          } else {
-            this.addPhotoFromGalerie();
-          }
+          this.addPhotoFromGalerie();
         }
       },
       {
@@ -234,9 +230,9 @@ export class Tab3Page {
     return await this.camera.getPicture(options);
   }
 
-  async errorInscription() {
+  async errorInscription(msg) {
     const toast = await this.toastController.create({
-      message: 'Email incorrect ou mot de passe trop court',
+      message: msg,
       duration: 2000,
       position: 'bottom',
       color: 'danger',

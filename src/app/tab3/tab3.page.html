@@ -189,7 +189,8 @@
 
 </ion-content>
 <ion-footer>
-  <ion-button *ngIf="statut===0" [disabled]="!inscform.valid" expand="full" fill="solid" (click)="saveToFB()">
+  <ion-button *ngIf="statut===0" [disabled]="!inscform.valid || image==='../assets/img/user.png'" expand="full"
+    fill="solid" (click)="saveToFB()">
     S'inscrire
   </ion-button>
   <ion-button *ngIf="statut===1" [disabled]="!loginform.valid" expand="full" fill="solid" (click)="connecter()">
