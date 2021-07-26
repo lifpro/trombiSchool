@@ -23,7 +23,6 @@ export class Tab3Page {
   fbcollection: AngularFirestoreCollection;
   itemDoc: AngularFirestoreDocument<Etudiant>
   password: string;
-  imagePath: string;
   image = '../assets/img/user.png';
   task: any;
   constructor(
@@ -124,13 +123,20 @@ export class Tab3Page {
 
   }
   saveEtudiantInfoToFB() {
-    this.task = this.afSG.ref(this.imagePath).putString(this.image, 'data_url');
+    this.task = this.afSG.ref('photo').child(this.item.id).putString(this.image, 'data_url');
     this.task.then(res => {
       this.serviceFb.saveDocument(this.item)
         .then(async resp => {
+          let photoLink = await this.afSG.ref(`photo/${this.item.id}`).getDownloadURL().toPromise();
+          this.item.photo = photoLink;
+          this.serviceFb.updateDocument(this.item)
+            .then(async resp => {
+
+            }).catch(error => {
+            })
           this.successInscription();
         }).catch(error => {
-          console.log(error);
+          this.errorInscription();
         })
     });
   }
@@ -198,7 +204,6 @@ export class Tab3Page {
     this.createUploadTask(base64);
   }
   createUploadTask(file: string): void {
-    this.imagePath = `photo/etud_${new Date().getTime()}.jpg`;
     this.image = 'data:image/jpg;base64,' + file;
   }
   async captureImageGalerie() {

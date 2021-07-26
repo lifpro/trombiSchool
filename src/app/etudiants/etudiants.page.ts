@@ -19,6 +19,7 @@ export class EtudiantsPage implements OnInit {
     { "id": 3, "nom": "drame", "prenom": "karouna", "sexe": "M", "telephone": "78905467", "email": "drame@gmail.com", "formation": "Génie logiciel", "cours": 1 }
   ];
   mform: EtudRech;
+  loaded;
   constructor(private router: Router,
     private route: ActivatedRoute,
     protected service: EtudiantsService,
