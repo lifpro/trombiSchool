@@ -5,8 +5,7 @@ $ionic serve
 $ionic lab
 
 #Lancer l'app dans l'emulateur
-$ionic cordova platform add android
-$ionic cordova run android
+$ionic cordova pla
 
 ionic cordova build browser
 ionic cordova run browser
@@ -32,3 +31,8 @@ npm install @ionic-native/base64
 #Internet
 ionic cordova plugin add cordova-plugin-network-information
 npm install --save @ionic-native/network
+
+#SqLite
+npm install @ionic-native/sqlite @ionic-native/sqlite-porter
+ionic cordova plugin add cordova-sqlite-storage
+ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter

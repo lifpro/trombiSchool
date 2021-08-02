@@ -22,11 +22,13 @@
     <ion-card-content>
       <ion-icon name="create-outline" [routerLink]="['/etudiants/'+e.id]" routerDirection="forward"></ion-icon>
       <ion-icon name="trash-outline" (click)="delete(e.id)"></ion-icon>
+      <div class="div-box" slot="start">
+        <img src="assets/img/user.png" (load)="loaded = false" [hidden]="loaded">
+        <img [src]="e.photo" (load)="loaded = true" alt="">
+      </div>
     </ion-card-content>
-    <!-- <div class="div-box" slot="start">
-      <img src="assets/img/user.png" (load)="loaded = false" [hidden]="loaded">
-      <img [src]="item.user.downloadUrl" (load)="loaded = true" alt="">
-    </div> -->
+
+
     <!-- <ion-card-content>
       <p>Téléphone :<strong>{{e.telephone}}</strong></p>
       <p>Email :<strong>{{e.email}}</strong></p>
