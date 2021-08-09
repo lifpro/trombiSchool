@@ -1,16 +1,69 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="etudiants"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Etudiant N°{{etudiant.id}}</ion-title>
+    <ion-title>
+      <ion-label>Etudiant</ion-label>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <div class="header">
+    <div class="photo-box">
+      <div class="img-box">
+        <img [src]="image">
+      </div>
+    </div>
+  </div>
 
-<ion-content class="ion-padding">
-  <p>Nom: <strong>{{etudiant.nom}}</strong></p>
-  <p>Prénom: <strong>{{etudiant.prenom}}</strong></p>
-  <p>Téléphone: <strong>{{etudiant.telephone}}</strong></p>
-  <p>Email: <strong>{{etudiant.email}}</strong></p>
-  <p>Formation:<strong> {{etudiant.formation}}</strong></p>
+  <ion-list *ngIf="etudiant">
+    <ion-item lines="none">
+      <ion-label class="fieldset" color="primary">Votre profil</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prénom</ion-label>
+      <ion-text>{{etudiant.prenom}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-text>{{etudiant.nom}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-text>{{etudiant.email}}</ion-text>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label class="fieldset" color="primary">Votre formation</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cycle</ion-label>
+      <ion-text>{{etudiant.cycle}}</ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Formation</ion-label>
+      <ion-text>{{etudiant.formation}}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ville</ion-label>
+      <ion-text>{{etudiant.ville}}</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Centre</ion-label>
+      <ion-text>{{etudiant.centre}}</ion-text>
+    </ion-item>
+
+
+  </ion-list>
+
 </ion-content>
+
+<ion-footer>
+
+  <ion-button expand="full" fill="solid" (click)="call()">
+    Appeler
+  </ion-button>
+  <ion-button expand="full" fill="solid" (click)="localiser()">
+    Localiser
+  </ion-button>
+</ion-footer>

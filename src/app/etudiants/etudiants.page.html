@@ -8,19 +8,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <!-- <ion-list>
     <ion-item>
       {{mform.cycle}}
     </ion-item>
-  </ion-list>
+  </ion-list> -->
   <ion-card *ngFor="let e of etudiants2">
     <ion-card-header>
-      <ion-card-subtitle>Matricule : {{e.id}}</ion-card-subtitle>
+      <!-- <ion-card-subtitle>Matricule : </ion-card-subtitle> -->
       <ion-card-title [style.text-decoration]="linkStyle">{{e.prenom | titlecase}} {{e.nom | uppercase}}
       </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-icon name="create-outline" [routerLink]="['/etudiants/'+e.id]" routerDirection="forward"></ion-icon>
+      <ion-icon name="create-outline" (click)="show(e)"></ion-icon>
       <ion-icon name="trash-outline" (click)="delete(e.id)"></ion-icon>
       <div class="div-box" slot="start">
         <img src="assets/img/user.png" (load)="loaded = false" [hidden]="loaded">

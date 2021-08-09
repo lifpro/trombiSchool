@@ -5,12 +5,13 @@ import { HttpClient } from '@angular/common/http';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Cycle } from '../model/cycle';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
-  dbName = 'trombischool.db';
+  dbName = 'trombischoolV1.db';
   private database: SQLiteObject;
   private dbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
   cycles = new BehaviorSubject([]);
@@ -20,16 +21,21 @@ export class DatabaseService {
     private tc: ToastController,
     private http: HttpClient) {
     this.plt.ready().then(() => {
-      this.sqlite.create({
-        name: this.dbName,
-        location: 'default'
-      }).then((db: SQLiteObject) => {
-        this.database = db;
-        this.seedDatabase();
-      }).catch((error: Error) => {
-        console.log('Error on open or create database: ', error);
-        return Promise.reject(error.message || error);
-      });
+      if (environment.production) {
+        this.sqlite.create({
+          name: this.dbName,
+          location: 'default'
+        }).then((db: SQLiteObject) => {
+          this.database = db;
+          this.seedDatabase();
+          this.dbReady.next(true);
+          // alert('Base de donnees créés')
+        }).catch((error: Error) => {
+          console.log('Error on open or create database: ', error);
+          return Promise.reject(error.message || error);
+        });
+      }
+
     });
   }
   seedDatabase() {
@@ -61,7 +67,9 @@ export class DatabaseService {
       }
       this.cycles.next(list);
     })
-      .catch(e => { });;
+      .catch(e => {
+        alert("error:" + e)
+      });;
   }
   getCycle(id): Promise<Cycle> {
     return this.database.executeSql('SELECT * FROM cycle WHERE code = ?', [id]).then(data => {

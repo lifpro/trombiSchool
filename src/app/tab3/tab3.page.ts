@@ -8,8 +8,11 @@ import { EtudiantFireBasesService } from '../@common/services/etudiants.firebase
 import { Toast } from '@ionic-native/toast/ngx';
 import { Network } from '@ionic-native/network/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { ActionSheetController, ToastController } from '@ionic/angular';
+import { ActionSheetController, Platform, ToastController } from '@ionic/angular';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { DatabaseService } from '../@common/services/database.service';
+import { DataService } from '../@common/services/data.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -25,7 +28,9 @@ export class Tab3Page {
   password: string;
   image = '../assets/img/user.png';
   task: any;
+  cycles: any;
   constructor(
+    private plt: Platform,
     protected service: EtudiantsService,
     protected serviceFb: EtudiantFireBasesService,
     public asc: ActionSheetController,
@@ -36,8 +41,11 @@ export class Tab3Page {
     public afFS: AngularFirestore,
     public afSG: AngularFireStorage,
     public toastController: ToastController,
+    public ds: DataService,
+    private db: DatabaseService,
     // private toast: Toast
   ) {
+    this.loadCycles();
     if (this.statut == 0) {
       this.item = new Etudiant();
       this.item.nom = "GOITA";
@@ -91,6 +99,28 @@ export class Tab3Page {
     this.inscform.get('password').valueChanges.subscribe(value => this.password = value.trim());
   }
 
+  loadCycles() {
+    console.log(this.ds.cycles)
+    if (environment.production) {
+      this.db.getDatabaseState().subscribe(rdy => {
+        if (rdy) {
+          this.db.loadCycles();
+          this.db.getCycles().subscribe(data => {
+            this.cycles = data;
+          });
+        }
+      });
+    } else {
+      // this.cycles = this.ds.cycles;
+      this.cycles = [
+        { code: 'D', nom: 'DUT' },
+        { code: 'L', nom: 'LICENSE' },
+        { code: 'M', nom: 'MASTER' },
+      ];
+    }
+
+
+  }
 
   getItem(id: string) {
     this.itemDoc = this.afFS.doc<Etudiant>(`etudiants/${id}`)

@@ -17,12 +17,24 @@ const routes: Routes = [
     loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantPageModule)
   },
   {
+    path: 'fiche',
+    loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantPageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./localisation/localisation.module').then(m => m.LocalisationPageModule)
+  },
+  {
     path: 'professeurs',
     loadChildren: () => import('./professeurs/professeurs.module').then(m => m.ProfesseursPageModule)
   },
   {
     path: 'professeurs/:id',
     loadChildren: () => import('./professeur/professeur.module').then(m => m.ProfesseurPageModule)
+  },
+  {
+    path: 'localisation',
+    loadChildren: () => import('./localisation/localisation.module').then(m => m.LocalisationPageModule)
   }
 
 ];

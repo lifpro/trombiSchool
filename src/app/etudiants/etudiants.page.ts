@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { EtudRech } from '../@common/model/etud-rech';
 import { Etudiant } from '../@common/model/etudiant';
 import { EtudiantFireBasesService } from '../@common/services/etudiants.firebase.service';
@@ -59,5 +59,13 @@ export class EtudiantsPage implements OnInit {
   public getDatas(data): any[] | any {
     return data !== null && data.hasOwnProperty('content') ? data.content : data;
   }
-
+  show(e) {
+    let navigationExtras: NavigationExtras = {
+      skipLocationChange: false,
+      state: {
+        item: e,
+      }
+    };
+    this.router.navigate(['/fiche'], navigationExtras);
+  }
 }

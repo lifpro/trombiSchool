@@ -21,12 +21,13 @@ export class Tab1Page {
     protected fb: FormBuilder,
   ) {
     this.mform = new EtudRech();
-    this.mform.cycle = "D";
+    this.mform.cycle = "M";
+    this.mform.formation = "GL"
     this.mform.ville = "Bamako";
 
     this.form = this.fb.group({
-      cycle: 'D',
-      formation: null,
+      cycle: 'M',
+      formation: 'GL',
       ville: 'Bamako',
       centre: null,
       nom: this.fb.control(null, [Validators.required]),

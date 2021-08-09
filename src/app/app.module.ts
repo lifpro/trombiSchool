@@ -17,7 +17,7 @@ import { Network } from '@ionic-native/network/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
-
+import { CallNumber } from '@ionic-native/call-number/ngx';
 export const firebaseConfig = {
   apiKey: "AIzaSyAvrjUc1ACTJRzwD7ibuR_h-kaOuEZ5gug",
   authDomain: "trombischoolgl4.firebaseapp.com",
@@ -45,6 +45,7 @@ export const firebaseConfig = {
     Camera,
     SQLite,
     SQLitePorter,
+    CallNumber,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

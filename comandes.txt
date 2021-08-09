@@ -36,3 +36,22 @@ npm install --save @ionic-native/network
 npm install @ionic-native/sqlite @ionic-native/sqlite-porter
 ionic cordova plugin add cordova-sqlite-storage
 ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
+
+#Call number
+ionic cordova plugin add call-number
+npm install @ionic-native/call-number
+
+
+#Google Maps
+ionic cordova plugin add cordova-plugin-googlemaps
+npm install --save @ionic-native/core@latest @ionic-native/google-maps@latest
+
+getLocation() {
+    let navigationExtras: NavigationExtras = {
+      skipLocationChange: false,
+      state: {
+        etudiant: this.etudiant,
+      }
+    };
+    this.router.navigate(['/localisation'], navigationExtras);
+  }
