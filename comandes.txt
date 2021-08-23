@@ -45,6 +45,10 @@ npm install @ionic-native/call-number
 #Google Maps
 ionic cordova plugin add cordova-plugin-googlemaps
 npm install --save @ionic-native/core@latest @ionic-native/google-maps@latest
+
+
+
+
 https://www.youtube.com/watch?v=yV-0lUyZGco
 Dans index
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyifxqCdmuF7Ah1-35M9TMnjWAmyUFiS0" async

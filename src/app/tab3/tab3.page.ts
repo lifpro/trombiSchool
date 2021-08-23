@@ -29,6 +29,9 @@ export class Tab3Page {
   image = '../assets/img/user.png';
   task: any;
   cycles: any;
+  formations: any;
+  villes: any;
+  centres: any;
   constructor(
     private plt: Platform,
     protected service: EtudiantsService,
@@ -46,6 +49,7 @@ export class Tab3Page {
     // private toast: Toast
   ) {
     this.loadCycles();
+    this.loadFormations();
     if (this.statut == 0) {
       this.item = new Etudiant();
       this.item.nom = "GOITA";
@@ -87,8 +91,14 @@ export class Tab3Page {
     this.subscribeIncs();
   }
   private subscribeIncs(): void {
-    this.inscform.get('cycle').valueChanges.subscribe(value => this.item.cycle = value.trim());
-    this.inscform.get('formation').valueChanges.subscribe(value => this.item.formation = value.trim());
+    this.inscform.get('cycle').valueChanges.subscribe(value => {
+      this.item.cycle = value.trim();
+      this.item.cycleLib = this.cycles.find(f => f.code == this.item.cycle).nom;
+    });
+    this.inscform.get('formation').valueChanges.subscribe(value => {
+      this.item.formation = value.trim();
+      this.item.formationLib = this.formations.find(f => f.code == this.item.formation).nom;
+    });
     this.inscform.get('prenom').valueChanges.subscribe(value => this.item.prenom = value.trim());
     this.inscform.get('ville').valueChanges.subscribe(value => this.item.ville = value.trim());
     this.inscform.get('centre').valueChanges.subscribe(value => this.item.centre = value.trim());
@@ -100,7 +110,6 @@ export class Tab3Page {
   }
 
   loadCycles() {
-    console.log(this.ds.cycles)
     if (environment.production) {
       this.db.getDatabaseState().subscribe(rdy => {
         if (rdy) {
@@ -120,6 +129,13 @@ export class Tab3Page {
     }
 
 
+  }
+  loadFormations() {
+    this.formations = [
+      { code: 'genie-logiciel', nom: 'Génie Logiciel' },
+      { code: 'marketing', nom: 'Marketing' },
+      { code: 'telecom', nom: 'Télécom' },
+    ];
   }
 
   getItem(id: string) {
@@ -160,6 +176,8 @@ export class Tab3Page {
 
   }
   saveEtudiantInfoToFB() {
+    this.item.cycleLib = this.cycles.find(f => f.code == this.item.cycle).nom;
+    this.item.formationLib = this.formations.find(f => f.code == this.item.formation).nom;
     this.task = this.afSG.ref('photo').child(this.item.id).putString(this.image, 'data_url');
     this.task.then(res => {
       this.serviceFb.saveDocument(this.item)

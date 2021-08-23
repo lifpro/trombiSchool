@@ -7,9 +7,13 @@ export class Etudiant {
     telephone: string;
     email: string;
     cycle: string;// L:Licence,M:Master,D:DUT
+    cycleLib: string;
     formation: string;
+    formationLib: string;
     cours: boolean;// O: cours du soir, 1: cours du jours
     photo: string;
     ville: string;
+    villeLib: string;
     centre: string;
+    centreLib: string;
 }

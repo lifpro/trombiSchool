@@ -17,9 +17,14 @@ export class Tab1Page {
   mform: EtudRech;
   form: FormGroup;
   link = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Ibrahim_Boubacar_Ke%C3%AFta_par_Claude_Truong-Ngoc_d%C3%A9cembre_2013_%28cropped%29.jpg/330px-Ibrahim_Boubacar_Ke%C3%AFta_par_Claude_Truong-Ngoc_d%C3%A9cembre_2013_%28cropped%29.jpg"
+  cycles: any;
+  formations: any;
+  villes: any;
+  centres: any;
   constructor(private router: Router,
     protected fb: FormBuilder,
   ) {
+    this.loadFormations();
     this.mform = new EtudRech();
     this.mform.cycle = "M";
     this.mform.formation = "GL"
@@ -51,5 +56,11 @@ export class Tab1Page {
     };
     this.router.navigate(['/etudiants'], navigationExtras);
   }
-
+  loadFormations() {
+    this.formations = [
+      { code: 'genie-logiciel', nom: 'Génie Logiciel' },
+      { code: 'marketing', nom: 'Marketing' },
+      { code: 'telecom', nom: 'Télécom' },
+    ];
+  }
 }

@@ -24,9 +24,7 @@
       <ion-item>
         <ion-label position="floating">Formation</ion-label>
         <ion-select formControlName="formation" interface="action-sheet">
-          <ion-select-option value="GL">Génie Logiciel</ion-select-option>
-          <ion-select-option value="TEL">Télécom</ion-select-option>
-          <ion-select-option value="CPT">Comptabilité</ion-select-option>
+          <ion-select-option *ngFor="let c of formations" value="{{c.code}}">{{c.nom}}</ion-select-option>
         </ion-select>
       </ion-item>
 

@@ -1,16 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsMapTypeId,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  CameraPosition,
-  MarkerOptions,
-  Marker,
-  Environment,
-  HtmlInfoWindow
-} from '@ionic-native/google-maps';
 import { Platform } from '@ionic/angular';
 declare var google: any;
 @Component({
@@ -32,16 +20,22 @@ export class LocalisationPage implements OnInit {
     this.markers.push({
       title: 'Sabalibougou',
       tel: '20215678',
-      latitude: 12.632497,
-      longitude: -8.030031
+      latitude: 12.594745,
+      longitude: -8.0097888
     });
-
+    this.markers.push({
+      title: 'Direction',
+      tel: '202156999',
+      latitude: 12.594740,
+      longitude: -8.0097888
+    });
   }
   ionViewDidEnter() {
     this.showMap();
   }
   showMap() {
-    const location = new google.maps.LatLng(12.632414, -8.032487);
+    const location = new google.maps.LatLng(12.594745, -8.0097888);
+
     const options = {
       center: location,
       zoom: 15,

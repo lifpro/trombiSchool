@@ -30,7 +30,7 @@
     </ion-item>
     <ion-item lines="none" no-padding class="desc" (click)="show(e)">
       <div class="value">
-        <div> {{e.cycle}},{{e.formation}}</div>
+        <div> {{e.cycleLib}}, {{e.formationLib}}</div>
         <div>{{e.centre}}, {{e.ville}}&nbsp;</div>
         <div *ngIf="e.cours===1">Cour du <strong>Jour</strong></div>
         <div *ngIf="e.cours!==1">Cour du <strong>Soir</strong></div>
