@@ -1,9 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>localisation</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button>
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Localisation</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <div #map id="map"></div>
 </ion-content>
+<!-- <ion-content [fullscreen]="true">
+  <div #map id="map_canvas"></div>
+</ion-content> -->

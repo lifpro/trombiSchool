@@ -46,12 +46,6 @@ npm install @ionic-native/call-number
 ionic cordova plugin add cordova-plugin-googlemaps
 npm install --save @ionic-native/core@latest @ionic-native/google-maps@latest
 
-getLocation() {
-    let navigationExtras: NavigationExtras = {
-      skipLocationChange: false,
-      state: {
-        etudiant: this.etudiant,
-      }
-    };
-    this.router.navigate(['/localisation'], navigationExtras);
-  }
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyifxqCdmuF7Ah1-35M9TMnjWAmyUFiS0" async
+    defer></script>

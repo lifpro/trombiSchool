@@ -142,6 +142,7 @@ export class Tab3Page {
     if (this.network.type === 'none') {
       this.errorConnexion();
     } else {
+
       this.afAuth.createUserWithEmailAndPassword(this.item.email,
         this.password)
         .then(auth => {
