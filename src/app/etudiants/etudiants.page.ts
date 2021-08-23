@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { EtudRech } from '../@common/model/etud-rech';
 import { Etudiant } from '../@common/model/etudiant';
 import { EtudiantFireBasesService } from '../@common/services/etudiants.firebase.service';
@@ -23,6 +24,7 @@ export class EtudiantsPage implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     protected service: EtudiantsService,
+    private callService: CallNumber,
     protected serviceFb: EtudiantFireBasesService) { }
 
   ngOnInit() {
@@ -32,7 +34,6 @@ export class EtudiantsPage implements OnInit {
         this.loadListFB();
       }
     });
-
   }
   loadListFB() {
     this.serviceFb.findDocuments(this.mform.cycle, this.mform.formation).subscribe(data => {
@@ -47,7 +48,7 @@ export class EtudiantsPage implements OnInit {
   loadList() {
     this.service.findAll().subscribe(data => {
       this.etudiants2 = this.getDatas(data);
-      console.log(this.etudiants2)
+
     });
   }
   delete(id: number) {
@@ -67,5 +68,19 @@ export class EtudiantsPage implements OnInit {
       }
     };
     this.router.navigate(['/fiche'], navigationExtras);
+  }
+  call(e) {
+    this.callService.callNumber(e.telephone, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
+  localiser(e) {
+    let navigationExtras: NavigationExtras = {
+      skipLocationChange: false,
+      state: {
+        item: e,
+      }
+    };
+    this.router.navigate(['/map'], navigationExtras);
   }
 }

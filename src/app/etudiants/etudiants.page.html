@@ -8,14 +8,55 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-list>
-    <ion-item>
-      {{mform.cycle}}
-    </ion-item>
-  </ion-list> -->
   <ion-card *ngFor="let e of etudiants2">
-    <ion-card-header>
-      <!-- <ion-card-subtitle>Matricule : </ion-card-subtitle> -->
+    <ion-item lines="none" no-padding class="user" (click)="show(e)">
+      <div class="div-box" slot="start">
+        <img src="assets/img/user.png" (load)="loaded = false" [hidden]="loaded">
+        <img [src]="e.photo" (load)="loaded = true" alt="">
+      </div>
+      <div class="buttons_box" slot="end">
+        <ion-icon name="play-circle" color="secondary">
+        </ion-icon>
+      </div>
+
+      <div>
+        <div class="label">{{e.prenom | titlecase}} {{e.nom | uppercase}}</div>
+        <div class="value">
+          <div>TEL: {{e.telephone}}</div>
+
+        </div>
+        <div class="time"><em>{{e.email}}</em></div>
+      </div>
+    </ion-item>
+    <ion-item lines="none" no-padding class="desc" (click)="show(e)">
+      <div class="value">
+        <div> {{e.cycle}},{{e.formation}}</div>
+        <div>{{e.centre}}, {{e.ville}}&nbsp;</div>
+        <div *ngIf="e.cours===1">Cour du <strong>Jour</strong></div>
+        <div *ngIf="e.cours!==1">Cour du <strong>Soir</strong></div>
+      </div>
+    </ion-item>
+    <ion-item lines="none" no-padding class="actions">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3" style="text-align: center;">
+            <ion-icon name="call" color="danger" (click)="call(e)"></ion-icon>
+          </ion-col>
+          <ion-col size="3" style="text-align: center;">
+            <ion-icon name="chatbubbles" color="tertiary" (click)="show(e)"></ion-icon>
+          </ion-col>
+          <ion-col size="3" style="text-align: center;">
+            <ion-icon name="share-social-outline" color="primary" (click)="show(e)"></ion-icon>
+          </ion-col>
+          <ion-col size="3" style="text-align: center;">
+            <ion-icon name="location-outline" color="primary" (click)="localiser(e)"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-item>
+    <!-- <ion-card-header>
+      <ion-card-subtitle>Matricule : </ion-card-subtitle> 
       <ion-card-title [style.text-decoration]="linkStyle">{{e.prenom | titlecase}} {{e.nom | uppercase}}
       </ion-card-title>
     </ion-card-header>
@@ -26,7 +67,7 @@
         <img src="assets/img/user.png" (load)="loaded = false" [hidden]="loaded">
         <img [src]="e.photo" (load)="loaded = true" alt="">
       </div>
-    </ion-card-content>
+    </ion-card-content> -->
 
 
     <!-- <ion-card-content>
